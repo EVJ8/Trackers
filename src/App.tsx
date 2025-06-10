@@ -2,7 +2,6 @@
 // Features: Home page, Workout Tracker, Progress page with graph, Excel import/export
 // Ensure Tailwind CSS is enabled, and install `xlsx` and `recharts` via `npm install xlsx recharts`
 
-import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
 import {
   LineChart,
