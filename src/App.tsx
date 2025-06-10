@@ -182,10 +182,11 @@ export default function App() {
     history.forEach((entry) => {
       entry.exercises.forEach((ex) => {
         const key = ex.name;
-        const volume = ex.sets.reduce(
-          (acc, s) => acc + (+s.weight || 0) * (+s.reps || 0),
-          0
-        );
+        const volume = (ex.sets as any[]).reduce(
+  (acc, s) => acc + (+s.weight || 0) * (+s.reps || 0),
+  0
+);
+
         if (!all[key]) all[key] = [];
         all[key].push({ date: entry.date, volume });
       });
@@ -203,11 +204,12 @@ export default function App() {
         selectedExercise &&
         entry.exercises.find((ex) => ex.name === selectedExercise);
       const volume = match
-        ? match.sets.reduce(
-            (acc, s) => acc + (+s.weight || 0) * (+s.reps || 0),
-            0
-          )
-        : 0;
+  ? (match.sets as any[]).reduce(
+      (acc, s) => acc + (+s.weight || 0) * (+s.reps || 0),
+      0
+    )
+  : 0;
+
       return match ? { date: entry.date, volume } : null;
     })
     .filter(Boolean);
