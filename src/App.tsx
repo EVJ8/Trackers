@@ -182,8 +182,47 @@ export default function App() {
     })
     .filter(Boolean);
 
-  // Home, tracker, and progress views remain unchanged from your version
-  // Paste them below if you need re-rendering support too
+  if (page === "home") {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-4">
+        <h1 className="text-4xl font-bold mb-8">🏋️ Gym Tracker</h1>
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg mb-4"
+          onClick={() => setPage("tracker")}
+        >
+          ▶️ Start Workout
+        </button>
+        <button
+          className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg"
+          onClick={() => setPage("progress")}
+        >
+          📈 Progress
+        </button>
+      </div>
+    );
+  }
 
-  return <div>UI code here…</div>;
+  if (page === "tracker") {
+    return (
+      <div className="min-h-screen bg-gray-100 text-gray-900 px-4 py-6">
+        <h2 className="text-xl font-bold mb-4">🏋️ Workout Tracker</h2>
+        <button onClick={() => setPage("home")} className="text-blue-600">← Back</button>
+        {/* Form UI for workout entry goes here */}
+        <p className="mt-4">Workout entry fields...</p>
+      </div>
+    );
+  }
+
+  if (page === "progress") {
+    return (
+      <div className="min-h-screen bg-white px-4 py-6 text-gray-900">
+        <h2 className="text-xl font-bold mb-4">📈 Progress</h2>
+        <button onClick={() => setPage("home")} className="text-blue-600">← Back</button>
+        {/* Graph and best/worst output */}
+        <p className="mt-4">Graph and history...</p>
+      </div>
+    );
+  }
+
+  return <div className="text-center p-8">Loading...</div>;
 }
